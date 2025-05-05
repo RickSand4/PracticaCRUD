@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<!-- [Head] start -->
+
+<head>
+    <title>Listado de Préstamos</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sistema de gestión de préstamos">
+    <meta name="keywords" content="préstamos, biblioteca, gestión">
+    <meta name="author" content="UPIIZ">
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon">
+    <!-- [Google Font] Family -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+    <!-- [Tabler Icons] https://tablericons.com -->
+    <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+    <!-- [Feather Icons] https://feathericons.com -->
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <!-- [Material Icons] https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="../assets/fonts/material.css">
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link">
+    <link rel="stylesheet" href="../assets/css/style-preset.css">
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<!-- [ Pre-loader ] End -->
+<!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="../dashboard/index.html" class="b-brand text-primary">
+                <!-- ========   Change your logo from here   ============ -->
+                <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
+            </a>
+        </div>
+        <div class="navbar-content">
+            <ul class="pc-navbar">
+                <li class="pc-item">
+                    <a href="../dashboard/index.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                        <span class="pc-mtext">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="pc-item pc-caption">
+                    <label>Gestión</label>
+                    <i class="ti ti-books"></i>
+                </li>
+                <li class="pc-item">
+                    <a href="/Libros" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-book"></i></span>
+                        <span class="pc-mtext">Libros</span>
+                    </a>
+                </li>
+                <li class="pc-item pc-active">
+                    <a href="/Prestamos" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-arrow-autofit-down"></i></span>
+                        <span class="pc-mtext">Préstamos</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- [ Sidebar Menu ] end -->
+
+<!-- [ Header Topbar ] start -->
+<header class="pc-header">
+    <div class="header-wrapper">
+        <div class="me-auto pc-mob-drp">
+            <ul class="list-unstyled">
+                <!-- ======= Menu collapse Icon ===== -->
+                <li class="pc-h-item pc-sidebar-collapse">
+                    <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+                <li class="pc-h-item pc-sidebar-popup">
+                    <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-auto">
+            <ul class="list-unstyled">
+                <li class="dropdown pc-h-item header-user-profile">
+                    <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+                        <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
+                        <span>Administrador</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+                        <div class="dropdown-header">
+                            <div class="d-flex mb-1">
+                                <div class="flex-shrink-0">
+                                    <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="mb-1">Administrador</h6>
+                                    <span>Sistema de Préstamos</span>
+                                </div>
+                                <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ti ti-user"></i>
+                            <span>Mi Perfil</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ti ti-settings"></i>
+                            <span>Configuración</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ti ti-power"></i>
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- [ Header ] end -->
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Gestión de Préstamos</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../dashboard/index.html">Inicio</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Listado de Préstamos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- [ sample-page ] start -->
+            <div class="col-md-12 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Listado de Préstamos</h5>
+                        <a th:href="@{/Prestamos/new}" class="btn btn-success float-end">
+                            <i class="ti ti-plus"></i> Nuevo Préstamo
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-borderless mb-0">
+                                <thead>
+                                <tr>
+                                    <th>ID Préstamo</th>
+                                    <th>ID Libro</th>
+                                    <th>Usuario</th>
+                                    <th>Fecha Préstamo</th>
+                                    <th>Fecha Devolución</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="prestamo : ${prestamos}">
+                                    <td th:text="${prestamo.id_prestamo}">1</td>
+                                    <td th:text="${prestamo.id_libro}">101</td>
+                                    <td th:text="${prestamo.nombre_usuario}">Juan Pérez</td>
+                                    <td th:text="${#temporals.format(prestamo.fecha_prestamo, 'dd/MM/yyyy')}">01/01/2023</td>
+                                    <td th:text="${#temporals.format(prestamo.fecha_devolucion, 'dd/MM/yyyy')}">15/01/2023</td>
+                                    <td class="text-end">
+                                        <a th:href="@{/Prestamos/edit/{id}(id=${prestamo.id_prestamo})}" class="btn btn-sm btn-primary">
+                                            <i class="ti ti-edit"></i> Editar
+                                        </a>
+                                        <a th:href="@{/Prestamos/delete/{id}(id=${prestamo.id_prestamo})}" class="btn btn-sm btn-danger">
+                                            <i class="ti ti-trash"></i> Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ sample-page ] end -->
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+<footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+        <div class="row">
+            <div class="col-sm my-1">
+                <p class="m-0">Sistema de Gestión de Préstamos - UPIIZ</p>
+            </div>
+            <div class="col-auto my-1">
+                <ul class="list-inline footer-link mb-0">
+                    <li class="list-inline-item"><a href="../index.html">Inicio</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Required Js -->
+<script src="../assets/js/plugins/popper.min.js"></script>
+<script src="../assets/js/plugins/simplebar.min.js"></script>
+<script src="../assets/js/plugins/bootstrap.min.js"></script>
+<script src="../assets/js/fonts/custom-font.js"></script>
+<script src="../assets/js/pcoded.js"></script>
+<script src="../assets/js/plugins/feather.min.js"></script>
+
+<script>
+    layout_change('light');
+    change_box_container('false');
+    layout_rtl_change('false');
+    preset_change("preset-1");
+    font_change("Public-Sans");
+</script>
+
+</body>
+<!-- [Body] end -->
+</html>
